@@ -11,7 +11,7 @@ int printf_reverse(va_list args, int printed)
 	char *str = va_arg(args, char *);
 	int len = 0;
 	int i;
-	
+
 	if (str == NULL)
 	{
 		_printf("(null)");
