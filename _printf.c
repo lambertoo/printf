@@ -17,16 +17,29 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			printed = selector(format, args, printed);
-			format++;
+			if (*format == 'r')
+			{
+				_putchar('%');
+				_putchar('r');
+				printed += 2;
+			}
+			else if (*format == '%')
+			{
+				_putchar('%');
+				printed++;
+			}
+			else
+			{
+				printed = selector(format, args, printed);
+			}
 		}
 		else
 		{
 			_putchar(*format);
 			printed++;
-			format++;
 		}
+		format++;
 	}
-	va_end(args);
-	return (printed);
+va_end(args);
+return (printed);
 }
