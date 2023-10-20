@@ -8,25 +8,33 @@
 
 int _printf(const char *format, ...)
 {
-	int printed = 0;
 	va_list args;
-
+	int printed = 0;
+	
 	va_start(args, format);
+
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			printed = selector(format, args, printed);
-			format++;
+			if (*format == '%')
+			{
+				_putchar('%');
+				printed++;
+			}
+			else
+			{
+				printed = selector(format, args, printed);
+			}
 		}
 		else
 		{
 			_putchar(*format);
 			printed++;
-			format++;
 		}
+		format++;
 	}
-	va_end(args);
-	return (printed);
+va_end(args);
+return (printed);
 }

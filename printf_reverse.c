@@ -9,24 +9,29 @@
 int printf_reverse(va_list args, int printed)
 {
 	char *str = va_arg(args, char *);
-
+	int len = 0;
+	int i;
+	
 	if (str == NULL)
 	{
 		_printf("(null)");
 		return (printed + 6);
 	}
-
-	int len = 0;
+	if (str[0] == '%' && str[1] == 'r')
+	{
+		_putchar('%');
+		_putchar('r');
+		printed += 2;
+		return (printed);
+	}
 	while (str[len])
 	{
 		len++;
 	}
-
-	for (int i = len - 1; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(str[i]);
 		printed++;
-	}re
-		 n (printed);
+	}
+return (printed);
 }
-
