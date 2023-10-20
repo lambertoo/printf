@@ -17,7 +17,11 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'r')
+			if (*format == 'd' || *format == 'i')
+			{
+				printed = printf_integer(args, printed);
+			}
+			else if (*format == 'r')
 			{
 				_putchar('%');
 				_putchar('r');
